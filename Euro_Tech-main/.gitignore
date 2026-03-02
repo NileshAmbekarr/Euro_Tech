@@ -1,0 +1,25 @@
+# Backend
+backend/target/
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
+backend/logs/
+
+# Frontend
+frontend/Full-Stack-Euro-Technologies/node_modules/
+frontend/Full-Stack-Euro-Technologies/dist/
+frontend/Full-Stack-Euro-Technologies/.angular/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+node_modules/
+dist/
+.env
+target/

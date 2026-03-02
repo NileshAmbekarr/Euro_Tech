@@ -1,0 +1,35 @@
+services:
+  # Backend Web Service
+  - type: web
+    name: eurotechnologies-backend
+    env: java
+    region: oregon
+    buildCommand: mvn clean package -DskipTests
+    startCommand: java -Dserver.port=$PORT -Dspring.profiles.active=prod -jar target/bootcamp-api-1.0.0.jar
+    envVars:
+      - key: JAVA_VERSION
+        value: 21
+      - key: MAVEN_VERSION
+        value: 3.9.6
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: eurotechnologies-db
+          property: connectionString
+      - key: DATABASE_USERNAME
+        fromDatabase:
+          name: eurotechnologies-db
+          property: user
+      - key: DATABASE_PASSWORD
+        fromDatabase:
+          name: eurotechnologies-db
+          property: password
+
+databases:
+  - name: eurotechnologies-db
+    databaseName: bootcamp_db
+    user: bootcamp_user
+    region: oregon
