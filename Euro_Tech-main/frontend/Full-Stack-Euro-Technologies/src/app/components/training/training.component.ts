@@ -323,6 +323,13 @@ export class TrainingComponent {
     if (this.selectedFilter === 'all') {
       return this.courses;
     }
+    if (this.selectedFilter === 'aiml') {
+      return this.courses.filter(course => 
+        course.title.includes('AI') || 
+        course.title.includes('ML') || 
+        course.title.includes('Data Science')
+      );
+    }
     return this.courses.filter(course => course.level === this.selectedFilter);
   }
 

@@ -12,6 +12,6 @@ export class ContactService {
   constructor(private http: HttpClient) {}
 
   sendMessage(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/send`, data);
+    return this.http.post(this.apiUrl, data);
   }
 }

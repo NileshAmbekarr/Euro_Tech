@@ -1,8 +1,9 @@
 <section class="hero">
+  <div class="hero-background"></div>
   <div class="container">
     <div class="hero-content fade-in" appScrollAnimation>
       <h1>Become a Certified Full Stack Developer</h1>
-      <p>Transform Your Career with Industry-Ready Skills</p>
+      <p>Build Your Tech Career with Industry-Ready Skills</p>
       <div class="hero-buttons">
         <button class="btn btn-primary" routerLink="/contact">Enroll Now</button>
         <button class="btn btn-secondary" routerLink="/training">View Courses</button>
@@ -26,12 +27,12 @@
 
 <section class="why-choose">
   <div class="container">
-    <h2 class="section-title fade-in" appScrollAnimation>Why Choose EuroTechnology?</h2>
+    <h2 class="section-title fade-in" appScrollAnimation>Why Choose Our Bootcamp?</h2>
     <div class="cards">
       <div class="card slide-up" appScrollAnimation>
         <i class="fas fa-chalkboard-teacher"></i>
         <h3>Industry Expert Instructors</h3>
-        <p>Learn from professionals with 10+ years of experience in top tech companies</p>
+        <p>Our instructors have 8+ years of experience working with modern technologies like Java, Spring Boot, React, and AI tools. They have trained hundreds of students and helped them build successful careers in top tech companies.</p>
       </div>
       <div class="card slide-up" appScrollAnimation>
         <i class="fas fa-project-diagram"></i>
@@ -50,8 +51,15 @@
 <section class="featured-courses">
   <div class="container">
     <h2 class="section-title fade-in" appScrollAnimation>Featured Courses</h2>
+    <div class="course-tabs">
+      <button class="tab-btn" [class.active]="selectedTab === 'all'" (click)="selectTab('all')">All Courses</button>
+      <button class="tab-btn" [class.active]="selectedTab === 'fullstack'" (click)="selectTab('fullstack')">Full Stack</button>
+      <button class="tab-btn" [class.active]="selectedTab === 'mern'" (click)="selectTab('mern')">MERN Stack</button>
+      <button class="tab-btn" [class.active]="selectedTab === 'frontend'" (click)="selectTab('frontend')">Frontend Development</button>
+      <button class="tab-btn" [class.active]="selectedTab === 'aiml'" (click)="selectTab('aiml')">AI / ML</button>
+    </div>
     <div class="course-grid">
-      <div class="course-card slide-up" appScrollAnimation appLazyLoad *ngFor="let course of featuredCourses">
+      <div class="course-card slide-up" appScrollAnimation appLazyLoad *ngFor="let course of getFilteredCourses()">
         <div class="course-image">
           <i [class]="course.icon"></i>
         </div>
@@ -59,7 +67,6 @@
           <h3>{{ course.title }}</h3>
           <div class="course-meta">
             <span><i class="fas fa-clock"></i> {{ course.duration }}</span>
-            <span><i class="fas fa-users"></i> {{ course.students }}+ Students</span>
           </div>
           <div class="course-rating">
             <i class="fas fa-star" *ngFor="let star of [1,2,3,4,5]"></i>

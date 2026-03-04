@@ -5,8 +5,11 @@ import com.bootcamp.api.entity.ContactMessage;
 import com.bootcamp.api.exception.ResourceNotFoundException;
 import com.bootcamp.api.repository.ContactMessageRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +18,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class ContactMessageService {
     
     private final ContactMessageRepository contactMessageRepository;
+    private final JavaMailSender mailSender;
+    
+    @Value("${app.notification.email}")
+    private String notificationEmail;
     
     @Transactional
     public ContactMessageDTO.Response createMessage(ContactMessageDTO.Request request) {
@@ -28,7 +35,32 @@ public class ContactMessageService {
                 .build();
         
         message = contactMessageRepository.save(message);
+        
+        // Send email notification
+        sendEmailNotification(message);
+        
         return mapToResponse(message);
+    }
+    
+    private void sendEmailNotification(ContactMessage message) {
+        try {
+            SimpleMailMessage mailMessage = new SimpleMailMessage();
+            mailMessage.setTo(notificationEmail);
+            mailMessage.setSubject("New Contact Message - " + message.getCourseInterest());
+            mailMessage.setText(
+                "New contact message received:\n\n" +
+                "Name: " + message.getName() + "\n" +
+                "Email: " + message.getEmail() + "\n" +
+                "Phone: " + message.getPhone() + "\n" +
+                "Course Interest: " + message.getCourseInterest() + "\n" +
+                "Message: " + message.getMessage() + "\n\n" +
+                "Submitted at: " + message.getCreatedAt()
+            );
+            mailSender.send(mailMessage);
+        } catch (Exception e) {
+            // Log error but don't fail the request
+            System.err.println("Failed to send email notification: " + e.getMessage());
+        }
     }
     
     public Page<ContactMessageDTO.Response> getAllMessages(Pageable pageable) {

@@ -1,1 +1,36 @@
 /* Services component specific styles */
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #e0e0e0;
+  margin-top: 0.5rem;
+  font-weight: 400;
+}
+
+.service-benefit {
+  margin: 1rem 0;
+  line-height: 1.6;
+}
+
+.service-meta {
+  display: flex;
+  gap: 1.5rem;
+  margin: 1rem 0;
+  padding: 0.75rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.service-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #667eea;
+  font-weight: 600;
+}
+
+.service-card .btn {
+  margin-top: 1rem;
+  width: 100%;
+}

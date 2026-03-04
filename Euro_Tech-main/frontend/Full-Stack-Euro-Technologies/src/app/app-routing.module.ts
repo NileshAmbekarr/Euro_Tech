@@ -9,6 +9,7 @@ import { PlacementComponent } from './components/placement/placement.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { animation: 'HomePage' } },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'portfolio', component: PortfolioComponent, data: { animation: 'PortfolioPage' } },
   { path: 'testimonials', component: TestimonialsComponent, data: { animation: 'TestimonialsPage' } },
   { path: 'contact', component: ContactComponent, data: { animation: 'ContactPage' } },
+  { path: 'profile', component: ProfileComponent, data: { animation: 'ProfilePage' } },
   { path: '**', redirectTo: '' }
 ];
 

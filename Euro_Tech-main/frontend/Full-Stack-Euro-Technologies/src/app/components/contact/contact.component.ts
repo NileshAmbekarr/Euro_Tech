@@ -22,12 +22,12 @@ export class ContactComponent implements OnInit {
     },
     {
       question: 'Do you provide placement assistance?',
-      answer: 'Yes, we provide 100% placement assistance including resume building and mock interviews.',
+      answer: 'Yes, we provide placement assistance. Our students have been placed in companies like Infosys, TCS, Capgemini, and fast-growing startups.',
       isOpen: false
     },
     {
       question: 'What is the fee structure?',
-      answer: 'Course fees range from ₹29,999 to ₹49,999 depending on the program.',
+      answer: 'Starting from ₹25,000. EMI Options Available. Free Career Counseling Session included.',
       isOpen: false
     },
     {

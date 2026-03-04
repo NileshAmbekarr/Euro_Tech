@@ -1,0 +1,10 @@
+SAVE YOUR EUROCORE TECHNOLOGIES LOGO HERE
+
+Instructions:
+1. Save the logo image you showed me as: logo.png
+2. Place it in this same folder (src/assets/)
+3. The logo will automatically appear in the header
+
+File name must be: logo.png
+
+The header is already configured to use this logo!

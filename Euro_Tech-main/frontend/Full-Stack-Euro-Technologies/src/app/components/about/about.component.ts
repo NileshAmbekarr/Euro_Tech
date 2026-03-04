@@ -7,9 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AboutComponent {
   teamMembers = [
-    { name: 'Rajesh Kumar', role: 'Founder & CEO' },
-    { name: 'Priya Sharma', role: 'Head of Training' },
-    { name: 'Amit Patel', role: 'Lead Instructor' },
-    { name: 'Sneha Reddy', role: 'Placement Head' }
+    { name: 'Kaushal Lahamge', role: 'Strategy and Operation Executive' },
+    { name: 'Purva Patil', role: 'Placement Head' },
+    { name: 'Aniket Suryawanshi', role: 'CEO & Founder' },
+    { name: 'Kaustubh Khairnar', role: 'Trainer' }
   ];
 }

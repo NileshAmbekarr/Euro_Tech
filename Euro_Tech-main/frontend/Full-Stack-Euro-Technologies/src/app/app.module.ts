@@ -19,6 +19,7 @@ import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AuthModalComponent } from './components/auth-modal/auth-modal.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 // Directives
 import { ScrollAnimationDirective } from './directives/scroll-animation.directive';
@@ -41,6 +42,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     TestimonialsComponent,
     ContactComponent,
     AuthModalComponent,
+    ProfileComponent,
     ScrollAnimationDirective,
     LazyLoadDirective
   ],

@@ -6,21 +6,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  selectedTab = 'all';
+  
   stats = [
-    { icon: 'fas fa-users', value: 0, target: 5000, label: 'Students Trained', suffix: '+' },
     { icon: 'fas fa-briefcase', value: 0, target: 95, label: 'Placement Rate', suffix: '%' },
     { icon: 'fas fa-building', value: 0, target: 100, label: 'Partner Companies', suffix: '+' },
     { icon: 'fas fa-star', value: 4.8, target: 4.8, label: 'Average Rating', suffix: '/5' }
   ];
 
-  featuredCourses = [
+  allCourses = [
     {
       title: 'Full Stack Web Development',
       duration: '6 Months',
       price: 49999,
       rating: 4.8,
       students: 2000,
-      icon: 'fas fa-code'
+      icon: 'fas fa-code',
+      category: 'fullstack'
     },
     {
       title: 'MERN Stack Development',
@@ -28,7 +30,8 @@ export class HomeComponent implements OnInit {
       price: 39999,
       rating: 4.7,
       students: 1500,
-      icon: 'fas fa-layer-group'
+      icon: 'fas fa-layer-group',
+      category: 'mern'
     },
     {
       title: 'Frontend Development',
@@ -36,9 +39,34 @@ export class HomeComponent implements OnInit {
       price: 29999,
       rating: 4.9,
       students: 1800,
-      icon: 'fas fa-palette'
+      icon: 'fas fa-palette',
+      category: 'frontend'
+    },
+    {
+      title: 'AI / ML Fundamentals',
+      duration: '5 Months',
+      price: 54999,
+      rating: 4.9,
+      students: 1600,
+      icon: 'fas fa-brain',
+      category: 'aiml'
     }
   ];
+
+  get featuredCourses() {
+    return this.allCourses.slice(0, 3);
+  }
+
+  selectTab(tab: string) {
+    this.selectedTab = tab;
+  }
+
+  getFilteredCourses() {
+    if (this.selectedTab === 'all') {
+      return this.allCourses;
+    }
+    return this.allCourses.filter(course => course.category === this.selectedTab);
+  }
 
   ngOnInit() {
     this.animateCounters();

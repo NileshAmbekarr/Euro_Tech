@@ -1,7 +1,8 @@
 <section class="page-hero">
   <div class="container">
     <h1>Our Services</h1>
-    <p>Comprehensive Learning Solutions</p>
+    <p>Our Training Programs</p>
+    <p class="subtitle">Practical courses designed for real-world tech careers from beginner to advanced.</p>
   </div>
 </section>
 
@@ -11,8 +12,12 @@
       <div class="service-card" *ngFor="let service of services">
         <i [class]="service.icon"></i>
         <h3>{{ service.title }}</h3>
-        <p>{{ service.description }}</p>
-        <button class="btn btn-primary" routerLink="/training">Learn More</button>
+        <p class="service-benefit">{{ service.benefit }}</p>
+        <div class="service-meta">
+          <span><i class="fas fa-clock"></i> {{ service.duration }}</span>
+          <span><i class="fas fa-signal"></i> {{ service.level }}</span>
+        </div>
+        <button class="btn btn-primary" routerLink="/training">View Details</button>
       </div>
     </div>
   </div>
