@@ -1,9 +1,10 @@
 services:
-  # Backend Web Service
+  # Backend Web Service (using Aiven MySQL as external database)
   - type: web
     name: eurotechnologies-backend
     env: java
     region: oregon
+    rootDir: Euro_Tech-main/backend
     buildCommand: mvn clean package -DskipTests
     startCommand: java -Dserver.port=$PORT -Dspring.profiles.active=prod -jar target/bootcamp-api-1.0.0.jar
     envVars:
@@ -16,20 +17,8 @@ services:
       - key: JWT_SECRET
         generateValue: true
       - key: DATABASE_URL
-        fromDatabase:
-          name: eurotechnologies-db
-          property: connectionString
+        value: jdbc:mysql://mysql-2f69a09f-doctorsearch00-40aa.a.aivencloud.com:11076/defaultdb?useSSL=true&requireSSL=true&serverTimezone=UTC
       - key: DATABASE_USERNAME
-        fromDatabase:
-          name: eurotechnologies-db
-          property: user
+        value: avnadmin
       - key: DATABASE_PASSWORD
-        fromDatabase:
-          name: eurotechnologies-db
-          property: password
-
-databases:
-  - name: eurotechnologies-db
-    databaseName: bootcamp_db
-    user: bootcamp_user
-    region: oregon
+        sync: false
