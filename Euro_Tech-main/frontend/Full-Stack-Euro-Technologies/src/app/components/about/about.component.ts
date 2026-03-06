@@ -7,9 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AboutComponent {
   teamMembers = [
-    { name: 'Kaushal Lahamge', role: 'Strategy and Operation Executive' },
-    { name: 'Purva Patil', role: 'Placement Head' },
-    { name: 'Aniket Suryawanshi', role: 'CEO & Founder' },
-    { name: 'Kaustubh Khairnar', role: 'Trainer' }
+    { name: 'Kaushal Lahamge', role: 'Strategy and Operation Executive', path:'assets/Kaushal.png' },
+    { name: 'Purva Patil', role: 'Placement Head', path:'assets/Purva.jpeg' },
+    { name: 'Kaustubh Khairnar', role: 'Trainer', path:'assets/default.png' }
   ];
 }
